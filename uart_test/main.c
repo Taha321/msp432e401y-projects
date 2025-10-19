@@ -9,52 +9,38 @@ void wait() {
     }
 }
 
-void port_n_init() {
-    reg_sysctl->RCGCGPIO |= (1 << 13); // enable clock for port N
-
-    __asm("nop");
-    __asm("nop");
-    __asm("nop");    
-
-    reg_gpio_pn->DIR |= 0xff;       // set port N as output
-    reg_gpio_pn->AFSEL &= ~0xff;    // set afsel for port N
-    reg_gpio_pn->PC &= ~0xff;       // gpiopc port N
-    reg_gpio_pn->DR2R |= 0xff;      // 2ma drive on port N
-    reg_gpio_pn->DR4R &= ~0xff;     // disable 4ma on port N
-    reg_gpio_pn->DR8R &= ~0xff;     // disable 8ma on port N
-    reg_gpio_pn->DEN |= 0xff;       // enable digital on port N
-}
 
 int main(void)
 {
-
-    port_n_init();
-
     reg_sysctl->RCGCGPIO |= 0xffff;
+    reg_sysctl->RCGCUART |= 0x1; // enable clock to UART0
 
     __asm("nop");
     __asm("nop");
     __asm("nop");    
 
-    reg_gpio_pd->DIR |= 0xff;       // set port D as output 
-    reg_gpio_pd->AFSEL &= ~0xff;    // set afsel for port D 
-    reg_gpio_pd->PC &= ~0xff;       // gpiopc port D
-    reg_gpio_pd->DR2R |= 0xff;      // 2ma drive on port D 
-    reg_gpio_pd->DR4R &= ~0xff;     // disable 4ma on port D     
-    reg_gpio_pd->DR8R &= ~0xff;     // disable 8ma on port D     
-    reg_gpio_pd->DEN |= 0xff;       // enable digital on port D
+//pin config
+    reg_gpio_pa->AFSEL |= 0x3; // set PA0 and PA1 to afsel
+    reg_gpio_pa->PCTL &= ~0xff; // clear PCTL bit field for PA0 and PA1
+    reg_gpio_pa->PCTL |= 0x11; // set PA0 and PA
+    reg_gpio_pa->DIR |= 0x3; // set output on PA0 and PA1
+    reg_gpio_pa->DR2R |= 0x3; // 2ma drive on PA0 and PA1
+    reg_gpio_pa->DR4R &= ~0xff;     // disable 4ma on port A
+    reg_gpio_pa->DR8R &= ~0xff;     // disable 8ma on port A  
+    reg_gpio_pa->DEN |= 0x3; // enable digital on PA0 and PA1
 
+//uart config
+    reg_uart0->CTL &= ~0x1; // disable uart0 while configuring
+    reg_uart0->IBRD = 8; // uart baud rate 115200, int 8
+    reg_uart0->FBRD = 44; // uart baud rate 115200, frac 44
+    reg_uart0->LCRH = 0x70; // 8 bit, no parity, one stop bit, fifo enabled
+    reg_uart0->CTL |= 0x01; // uart enable
+    reg_uart0->CTL |= 0x300; // uart tx and rx enabl
 
 
     while(1)
-    {
-        reg_gpio_pd->DATA4 = 1;
-        reg_gpio_pd->DATA5 = 0;
-        reg_gpio_pn->DATA1 = 1;
-        wait();
-        reg_gpio_pd->DATA4 = 0;
-        reg_gpio_pd->DATA5 = 1;
-        reg_gpio_pn->DATA1 = 0;
+    {   
+        reg_uart0->TDR = 'A'; // send character 'A' over UART
         wait();
     }
 
