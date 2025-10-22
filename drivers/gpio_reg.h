@@ -83,24 +83,24 @@ typedef __attribute__((packed)) struct {
 
 } gpio_register_map_t;
 
-static gpio_register_map_t* reg_gpio_pa = (gpio_register_map_t*)0x40058000;
-static gpio_register_map_t* reg_gpio_pb = (gpio_register_map_t*)0x40059000;
-static gpio_register_map_t* reg_gpio_pc = (gpio_register_map_t*)0x4005A000;
-static gpio_register_map_t* reg_gpio_pd = (gpio_register_map_t*)0x4005B000;
-static gpio_register_map_t* reg_gpio_pe = (gpio_register_map_t*)0x4005C000;
-static gpio_register_map_t* reg_gpio_pf = (gpio_register_map_t*)0x4005D000;
-static gpio_register_map_t* reg_gpio_pg = (gpio_register_map_t*)0x4005E000;
-static gpio_register_map_t* reg_gpio_ph = (gpio_register_map_t*)0x4005F000;
-static gpio_register_map_t* reg_gpio_pj = (gpio_register_map_t*)0x40060000;
-static gpio_register_map_t* reg_gpio_pk = (gpio_register_map_t*)0x40061000;
-static gpio_register_map_t* reg_gpio_pl = (gpio_register_map_t*)0x40062000;
-static gpio_register_map_t* reg_gpio_pm = (gpio_register_map_t*)0x40063000; 
-static gpio_register_map_t* reg_gpio_pn = (gpio_register_map_t*)0x40064000;
-static gpio_register_map_t* reg_gpio_pp = (gpio_register_map_t*)0x40065000;
-static gpio_register_map_t* reg_gpio_pq = (gpio_register_map_t*)0x40066000;
-static gpio_register_map_t* reg_gpio_pr = (gpio_register_map_t*)0x40067000;
-static gpio_register_map_t* reg_gpio_ps = (gpio_register_map_t*)0x40068000;
-static gpio_register_map_t* reg_gpio_pt = (gpio_register_map_t*)0x40069000;
+#define reg_gpio_pa ((gpio_register_map_t*)0x40058000)
+#define reg_gpio_pb ((gpio_register_map_t*)0x40059000)
+#define reg_gpio_pc ((gpio_register_map_t*)0x4005A000)
+#define reg_gpio_pd ((gpio_register_map_t*)0x4005B000)
+#define reg_gpio_pe ((gpio_register_map_t*)0x4005C000)
+#define reg_gpio_pf ((gpio_register_map_t*)0x4005D000)
+#define reg_gpio_pg ((gpio_register_map_t*)0x4005E000)
+#define reg_gpio_ph ((gpio_register_map_t*)0x4005F000)
+#define reg_gpio_pj ((gpio_register_map_t*)0x40060000)
+#define reg_gpio_pk ((gpio_register_map_t*)0x40061000)
+#define reg_gpio_pl ((gpio_register_map_t*)0x40062000)
+#define reg_gpio_pm ((gpio_register_map_t*)0x40063000)
+#define reg_gpio_pn ((gpio_register_map_t*)0x40064000)
+#define reg_gpio_pp ((gpio_register_map_t*)0x40065000)
+#define reg_gpio_pq ((gpio_register_map_t*)0x40066000)
+#define reg_gpio_pr ((gpio_register_map_t*)0x40067000)
+#define reg_gpio_ps ((gpio_register_map_t*)0x40068000)
+#define reg_gpio_pt ((gpio_register_map_t*)0x40069000)
 
 
 

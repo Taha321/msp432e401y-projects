@@ -1,4 +1,4 @@
-ENTRY(Reset_Handler)
+ENTRY(reset_handler)
 MEMORY
 {
     FLASH(rx) :ORIGIN =0x00000000,LENGTH =1024k

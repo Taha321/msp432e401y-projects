@@ -42,14 +42,14 @@ typedef __attribute__((packed)) struct {
 
 } uart_register_map_t;
 
-uart_register_map_t* reg_uart0 = (uart_register_map_t*)0x4000C000;
-uart_register_map_t* reg_uart1 = (uart_register_map_t*)0x4000D000;
-uart_register_map_t* reg_uart2 = (uart_register_map_t*)0x4000E000;
-uart_register_map_t* reg_uart3 = (uart_register_map_t*)0x4000F000;
-uart_register_map_t* reg_uart4 = (uart_register_map_t*)0x40010000;
-uart_register_map_t* reg_uart5 = (uart_register_map_t*)0x40011000;
-uart_register_map_t* reg_uart6 = (uart_register_map_t*)0x40012000;
-uart_register_map_t* reg_uart7 = (uart_register_map_t*)0x40013000;
+#define reg_uart0 ((uart_register_map_t*)0x4000C000)
+#define reg_uart1 ((uart_register_map_t*)0x4000D000)
+#define reg_uart2 ((uart_register_map_t*)0x4000E000)
+#define reg_uart3 ((uart_register_map_t*)0x4000F000)
+#define reg_uart4 ((uart_register_map_t*)0x40010000)
+#define reg_uart5 ((uart_register_map_t*)0x40011000)
+#define reg_uart6 ((uart_register_map_t*)0x40012000)
+#define reg_uart7 ((uart_register_map_t*)0x40013000)
 
 
 
